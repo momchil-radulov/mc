@@ -16,7 +16,7 @@ services:
       - mosquitto
     image: nodered/node-red
     volumes:
-      - "./node-red/data:/data"
+      - "./nodered/data:/data"
     networks:
       - mosquitto_net
     ports:
