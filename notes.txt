@@ -1,5 +1,8 @@
 # for node-red with mosquitto
-docker compose up -d  # start
-docker compose up     # for debugging
+docker compose start  # start
 docker compose stop   # stop
+docker compose up -d  # init
+docker compose up     # for debugging
+docker compose down   # delete
+
 docker exec -it -u root mosquitto /bin/sh  # enter in container
