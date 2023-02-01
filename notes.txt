@@ -6,3 +6,16 @@ docker compose up     # for debugging
 docker compose down   # delete
 
 docker exec -it -u root mosquitto /bin/sh  # enter in container
+
+openvpn
+sudo apt install openvpn
+sudo systemctl enable openvpn
+cp /home/linaro/Desktop/rasp_2.ovpn /etc/openvpn/rasp_2.conf  # .ovpn => .conf
+[/etc/default/openvpn] (file)
+AUTOSTART="rasp_2"
+
+crontab -e
+# m h  dom mon dow   command
+*/2 * * * * pgrep mqtt_mc0003_in || /home/linaro/Desktop/kemsa/mqtt_mc0003_in.sh
+*/2 * * * * pgrep mqtt_mc0003_out || /home/linaro/Desktop/kemsa/mqtt_mc0003_out.sh
+@reboot sleep 25 && chromium --kiosk /home/linaro/Desktop/start.html
