@@ -10,6 +10,7 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+    restart: always
   node-red:
     container_name: nodered
     depends_on:
@@ -21,6 +22,7 @@ services:
       - mosquitto_net
     ports:
       - "1880:1880"
+    restart: always
 networks:
   mosquitto_net:
     name: mosquitto_net
